@@ -1,0 +1,92 @@
+select * from [Table] - shows all data
+
+select taz from [Table] - shows only taz
+
+select taz, telephone from [Table] - shows taz and telephone from table
+
+select taz + telepone from [Table] - sums them up
+
+select taz as 'id' from [Table] - shows taz form [Table] and names it as id
+
+delete from [Table] - deletes all data from table -> then refresh  to see the result
+
+drop table [Table] - deletes table from data base
+
+select * from [Table] where a > 25 - shows all data from table where a column higher then 25
+
+select * from [Table] where a>b - shows all data from table where a column is bigger then b
+
+select * from [Table] where a<>b - shows all data from table where a isn't equal to b
+
+select * from [Table] where a>b and( b>c or c>b) - shows all data from table that first column is bigger then second,
+ and third is bigger then second or the oppisite
+
+insert into [Table] (column names) select (columns names) from [Table2]  - inserting new data to table 2 from table 1
+
+insert into [Table](column names) select  (column names) from [Table2] where taz > 444 - 
+- inserting new data to table 2 from table 1 that taz is greater then 444
+
+identity -  select one of the columns of the table, go to column properties, open the identity specification:
+1. identity increment - how much should the id grow from one to another
+2. identity seed - where the id starts from
+
+column properties - Default value or binding
+
+update [Table] set (column) = (value) - changes all values of column to the value
+
+update [Table] set (column) = (value) where taz = "123" - changes "column value" where taz is 123 to "value"
+
+strings : 
+1. Char - uses all memory allocated - fast but takes memory that sometimes isn't used
+ (nChar is same as Char, difference is that it's Unicode value (16 bits))
+2. varChar - gives max memory to the string but using the amount that we need (slower) - better using this then Char in most situations
+(nvarChar is same as varChar, difference is that it's Unicode value (16 bits))
+
+select Upper((column)) from [Table] - Upper changes text to UpperCase (Lower() is the opposite)
+
+Space() - gives us space in the column
+
+Reverse() - reverses the string
+
+Len() - gives us the length of the string
+
+Replace((column), "value", "value2") - replaces the value from column to value2
+
+Substring((string),(start position),(length)) - gives us a substring from the original string with the length the we putted
+
+/*select * from TMP
+
+select * from TMP where shem like 'B%'
+select * from TMP where shem like '%E%'
+
+select * from TMP where shem like '_I'
+select * from TMP where shem like '_I%'
+
+select * from TMP where shem like '_B_%E_%H%'
+
+select * from TMP where shem not like '_I'
+
+--select * from Employees 
+
+--select * from Employees where FirstName like 'N%'
+
+--select * from Employees where (FirstName like '%A%' OR FirstName like '%B%') and FirstName like '%C%'
+
+--select * from Employees where (lower(FirstName) like '%A%' OR lower(FirstName) like '%B%') and FirstName like '%C%'
+
+--select * from Employees where Region is null 
+
+--select * from Employees where Region is not null 
+
+--select * from Employees where Region is null and FirstName like '%n%'
+
+select * from [Order Details] Tbl1
+inner join Orders Tbl2 on Tbl1.OrderID = Tbl2.OrderID
+inner join Customers Tbl3 on Tbl3.CustomerID = Tbl2.CustomerID
+
+select * from [Employees] Tbl1
+inner join EmployeeTerritories Tbl2 on Tbl1.EmployeeID = Tbl2.EmployeeID
+inner join Territories Tbl3 on Tbl3.TerritoryID = Tbl2.TerritoryID
+
+select * from [Orders] Tbl1
+inner join Shippers Tbl2 on Tbl1.ShipVia = Tbl2.ShipperID where ShipperID = 2
